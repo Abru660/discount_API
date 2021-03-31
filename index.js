@@ -17,10 +17,11 @@ async function asyncCall () {
 
     //add coupon ressource : JSON
     app.post('/coupons', async  (req, res) => {
-        lastid = await coupons.count();
-        lastid = parseInt(lastid)+1;
+        aggregate = await coupons.aggregate([ {$group:{ _id:null,max:{$max:"$_id"}}},{$project:{_id:0}}]).toArray();
+        // console.log(aggregate);
+        lastid = parseInt(aggregate[0].max)+1;
         req.body._id = lastid;
-        if ("libelle" in req.body&& "discount" in req.body && "deadline" in req.body){
+        if ("libelle" in req.body && "discount" in req.body && "deadline" in req.body){
             try{
                 await coupons.insertOne(req.body);
                 res.status(201).json(req.body); 
