@@ -1,0 +1,18 @@
+{
+  "name": "api_mspr",
+  "version": "1.0.0",
+  "description": "api for mspr project",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec test/ --recursive --timeout 50000 --exit"
+  },
+  "author": "ESPI student",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "express": "^4.17.1",
+    "mocha": "^8.3.2",
+    "mongo": "^0.1.0",
+    "superagent": "^6.1.0"
+  }
+}
