@@ -100,7 +100,7 @@ async function asyncCall () {
                     res.status(400);
                 }
             }else{
-                res.status(400).json("erreur l'id n'existe pas");
+                res.status(404).json("erreur l'id n'existe pas");
             }
         })
     })
